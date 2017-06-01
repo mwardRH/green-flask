@@ -1,9 +1,11 @@
-from flask import Flask
+import socket
+from flask import Flask, request
+
 application = Flask(__name__)
 
 @application.route("/")
-def hello():
-    return "Hello GREEN!"
+def return_hostname():
+    return "This is {} on {} running the GREEN version of the application".format(socket.gethostname(), request.remote_addr)
 
 if __name__ == "__main__":
     application.run()
